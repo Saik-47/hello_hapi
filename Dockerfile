@@ -11,6 +11,6 @@ RUN npm install
 # copy the app
 COPY . .
 
-# expose port 3000 and start the app
+# expose port 3000 and start the ap
 EXPOSE 3000
 CMD [ "npm", "start" ]
