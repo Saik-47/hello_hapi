@@ -1,11 +1,6 @@
 pipeline {
 
-    agent {
-        docker {
-            image 'node'
-            args '-u root'
-        }
-    }
+    agent { dockerfile true }
 
     stages {
         stage('Build') {
