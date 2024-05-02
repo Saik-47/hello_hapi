@@ -1,9 +1,23 @@
 pipeline {
-    agent { dockerfile true }
+
+    agent {
+        docker {
+            image 'node'
+            args '-u root'
+        }
+    }
+
     stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh 'npm install'
+            }
+        }
         stage('Test') {
             steps {
-                sh 'nginx --version'
+                echo 'Testing...'
+                sh 'npm test'
             }
         }
     }
