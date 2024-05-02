@@ -2,7 +2,7 @@ FROM node:18-alpine
 
 WORKDIR /sample-node-app
 
-COPY server.js .
+COPY app.js .
 COPY package.json .
 
 RUN npm install
