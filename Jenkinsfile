@@ -1,24 +1,9 @@
-#!/usr/bin/env groovy
-
 pipeline {
-
-    agent {
-        docker {
-            image 'nginx:alpine'
-            args '-u root'
-        }
-    }
-
+    agent { dockerfile true }
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building...'
-            }
-        }
         stage('Test') {
             steps {
-                echo 'Testing...'
-                sh 'nginx -t'
+                sh 'nginx --version'
             }
         }
     }
