@@ -1,16 +1,10 @@
-# use the latest node LTS release
-FROM node:gallium
-WORKDIR /usr/src/app
+FROM node:18-alpine
 
-# copy package.json and package-lock.json and install packages. we do this
-# separate from the application code to better use docker's caching
-# `npm install` will be cached on future builds if only the app code changed
-COPY package*.json ./
+WORKDIR /sample-node-app
+
+COPY server.js
+COPY package.json
+
 RUN npm install
 
-# copy the app
-COPY . .
-
-# expose port 3000 and start the ap
-EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD ["node", "server"]
